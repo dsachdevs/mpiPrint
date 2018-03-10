@@ -1,23 +1,17 @@
 const express = require('express');
-const mysql = require ('mysql');
 const parser = require('body-parser');
-const db_config = require('./db_config.js');
-var routes = require('./routes.js');
-
-var connection = mysql.createConnection({
-	host: db_config.storageConfig.host,
-	user: db_config.storageConfig.user,
-	password: db_config.storageConfig.password,
-	database: db_config.storageConfig.database
-	});
-
-connection.connect(function(err) {
-  if (err) throw err
-  console.log('You are now connected...')
-})
+// const db_config = require('./db_config.js');
+const routes = require('./routes.js');
+const cors = require('cors');
 
 var app = express();
 app.use(parser.json());
+
+var corsOptions = {
+  origin: 'http://localhost:8080',
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions))
 
 app.use('/api', routes);
 
