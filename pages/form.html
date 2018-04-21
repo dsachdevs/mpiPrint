@@ -1,165 +1,204 @@
-<div class="container border rounded" >
 
-	<div class="row d-flex justify-content-between align-items-end " >
-
-		<div class="col-md-3 col-sm-4 col-6">
-			<img src="./images/mpi_logo.png" alt="MPI logo" class="img-fluid">
-		</div>
-
-		<div class="col-md-6 col-sm-8 col-10 mb-1 my-auto">
-				<p class="m-0 text-right text-nowrap">139 Basaltic Road, Concord, ON L4K 1G4</p>
-				<p class="m-0 text-right text-nowrap">Off: 905-760-5522 Fax: 905-760-5523</p>
-		</div>
-
+	<div class="btn-group-vertical float-right sticky-top d-print-none pt-5" role="group" aria-label="Basic example" style="width: 7%;">
+		  <a href="#!" class="btn btn-outline-primary">Top</a>
+		  <a href="#quantitynav" class="btn btn-outline-primary" style="overflow: hidden;">Quantity</a>
+		  <a href="#covernav" target="_self" class="btn btn-outline-primary">Cover</a>
+		  <a href="#!" class="btn btn-outline-primary">Text</a>
+		  <a href="#!" class="btn btn-outline-primary">Printing</a>
+		  <a href="#!" class="btn btn-outline-primary">Bindery</a>
+		  <a href="#!" class="btn btn-outline-primary">Bottom</a>
 	</div>
 
-	<hr>
 
-	<form>
-		<div class="form-group">
-			<div class="row d-flex justify-content-end">
-				<div class="col-lg-3 col-md-4 input-group  mb-2 mr-sm-2">
-					<div class="input-group-prepend">
-							<div class="input-group-text p-1">Quote# </div>
-						</div>
-						<input class="form-control p-1" aria-describedby="quote" type="text">
-				</div>
-			</div>
 
-			<div class="row d-flex justify-content-between">
-				<div class="col-lg-4 col-md-5 input-group mb-2 mr-sm-2">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Client</div>
-						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
+	<div class="container border rounded" >
+
+			<div class="row d-flex justify-content-between align-items-end " >
+
+				<div class="col-md-3 col-sm-4 col-6">
+					<img src="./images/mpi_logo.png" alt="MPI logo" class="img-fluid">
 				</div>
 
-				<div class="col-lg-3 col-md-4 input-group mb-2 mr-sm-2">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Date</div>
-						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
+				<div class="col-md-6 col-sm-8 col-10 mb-1 my-auto">
+						<p class="m-0 text-right text-nowrap">139 Basaltic Road, Concord, ON L4K 1G4</p>
+						<p class="m-0 text-right text-nowrap">Off: 905-760-5522 Fax: 905-760-5523</p>
 				</div>
 
 			</div>
 
-			<div class="row d-flex justify-content-between">
-				<div class="col-lg-6 col-md-7 input-group mb-2 mr-sm-2">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Specs</div>
+			<hr>
+
+			<form>
+				<div class="form-group">
+					<div class="row d-flex justify-content-end">
+						<div class="col-lg-3 col-md-4 input-group  mb-2 mr-sm-2">
+							<div class="input-group-prepend">
+   								<div class="input-group-text p-1">Quote# </div>
+  							</div>
+								<input class="form-control p-1" aria-describedby="quote" type="text" ng-model="head_data.quote">
 						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-				</div>
-
-				<div class="col-lg-3 col-md-4 input-group mb-2 mr-sm-2">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Trim size</div>
-						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-				</div>
-			</div>
-
-
-			<div class="row d-flex justify-content-end mb-2">
-				<div class="col-lg-2 col-md-3 col-sm-5 input-group">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1"># TXT pages</div>
-						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-				</div>
-
-				<div class="col-lg-2 col-md-3 col-sm-5 input-group">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1"># CVR pages</div>
-						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-				</div>
-			</div>
-
-			<div class="row d-flex justify-content-start mb-2">
-				<div class="col-lg-2 col-md-3 col-sm-5 input-group ">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Stock COVER</div>
-						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-
-				</div>
-
-				<div class="col-lg-2 col-md-3 col-sm-5 input-group ">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Sheet size</div>
-						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-						
-				</div>
-
-				<div class="col-lg-2 col-md-3 col-sm-5 input-group ">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Colors side-1</div>
-						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-				</div>
-
-				<div class="col-lg-2 col-md-3 col-sm-5 input-group ">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Colors side-2</div>
-						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-				</div>
-
-				<div class="col-lg-2 col-md-3 col-sm-5 offset-lg-0 offset-md-6 input-group ">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">UV/Varnish</div>
-						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
 					</div>
 
-				<div class="col-lg-2 col-md-3 col-sm-5 offset-lg-0 input-group ">
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">AQ</div>
+					<div class="row d-flex justify-content-between">
+						<div class="col-lg-4 col-md-5 input-group mb-2 mr-sm-2">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Client</div>
+    							</div>
+								<input class="form-control p-1" aria-describedby="client" type="text" ng-model="head_data.client">
 						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
+
+						<div class="col-lg-3 col-md-4 input-group mb-2 mr-sm-2">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Date</div>
+    							</div>
+								<input class="form-control p-1" aria-describedby="client" type="text" ng-model="head_data.date">
+						</div>
+
 					</div>
-				</div>
 
-			<div class="row d-flex justify-content-start">
-				<div class="col-lg-2 col-md-3 col-sm-5 input-group">
-
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Stock TEXT</div>
+					<div class="row d-flex justify-content-between">
+						<div class="col-lg-5 col-md-6 input-group mb-2 mr-sm-2">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Specs</div>
+    							</div>
+								<input class="form-control p-1" aria-describedby="client" type="text" ng-model="head_data.specs[0]">
 						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-				</div>
 
-				<div class="col-lg-2 col-md-3 col-sm-5 input-group">
-						
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Sheet size</div>
+						<div class="col-lg-3 col-md-4 input-group mb-2 mr-sm-2">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Trim size</div>
+    							</div>
+								<input class="form-control p-1" aria-describedby="client" type="text" ng-model="head_data.trimsize">
 						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-				</div>
+					</div>
 
-				<div class="col-lg-2 col-md-3 col-sm-5 input-group">
-
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Colors side-1</div>
+					<div class="row justify-content-between">
+						<div class="col-lg-5 col-md-6 input-group mb-2 mr-sm-2">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Specs</div>
+    							</div>
+								<input class="form-control p-1" aria-describedby="client" type="text" ng-model="head_data.specs[1]">
 						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-				</div>
+					</div>
 
-				<div class="col-lg-2 col-md-3 col-sm-5 input-group ">
-
-						<div class="input-group-prepend">
-								 <div class="input-group-text p-1">Colors side-2</div>
+					<div class="row justify-content-between">
+						<div class="col-lg-5 col-md-6 input-group mb-2 mr-sm-2">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Specs</div>
+    							</div>
+								<input class="form-control p-1" aria-describedby="client" type="text" ng-model="head_data.specs[1]">
 						</div>
-						<input class="form-control p-1" aria-describedby="client" type="text">
-				</div>
+					</div>
 
-			</div>
 
-			<hr/>
+					<div class="row d-flex justify-content-end mb-2">
+						<div class="col-lg-2 col-md-3 col-sm-5 input-group">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1"># TXT pages</div>
+    							</div>
+								<input class="form-control p-1" aria-describedby="client" type="text" ng-model="head_data.txtnos"
+								ng-change="calcUpsT()">
+						</div>
 
-			<button type="submit" class="btn btn-primary">Submit</button>
+						<div class="col-lg-2 col-md-3 col-sm-5 input-group">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1"># CVR pages</div>
+    							</div>
+								<input class="form-control p-1" aria-describedby="client" type="text" ng-model="head_data.cvrnos" ng-change="calcUps()">
+						</div>
+					</div>
+
+					<div class="row justify-content-start mb-2">
+						<div class="col-lg-2 col-md-3 col-sm-5 input-group ">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">COVER</div>
+    							</div>
+								<select class="custom-select" ng-options = "g as g.gradeDesc for g in grades" ng-model = "head_data.cvrstock" ng-change="calcCwt()">
+								</select>
+
+						</div>
+
+						<div class="col-lg-2 col-md-3 col-sm-5 input-group ">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Sheet size</div>
+    							</div>
+								<select class="custom-select" ng-options = "s as s.sizeDesc for s in sizes" ng-model = "head_data.cvrsize" ng-change="calcCwt()">
+								</select>
+								
+						</div>
+
+						<div class="col-lg-2 col-md-3 col-sm-5 input-group ">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Colors side-1</div>
+    							</div>
+    							<select class="custom-select" ng-options = "c for c in colors" ng-model = "head_data.cvrcolor1" ></select>
+						</div>
+
+						<div class="col-lg-2 col-md-3 col-sm-5 input-group ">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Colors side-2</div>
+    							</div>
+								<select class="custom-select" ng-options = "c for c in colors" ng-model = "head_data.cvrcolor2" ></select>
+						</div>
+
+						<div class="col-lg-2 col-md-3 col-sm-5 offset-lg-0 offset-md-6 input-group ">
+								<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">UV/Varnish</div>
+    							</div>
+								<select class="custom-select" ng-options = "yn for yn in YNopt" ng-model = "head_data.cvruv" ></select>
+							</div>
+
+						<div class="col-lg-2 col-md-3 col-sm-5 offset-lg-0 input-group ">
+								<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">AQ</div>
+    							</div>
+								<select class="custom-select" ng-options = "yn for yn in YNopt" ng-model = "head_data.cvraq" ></select>
+							</div>
+						</div>
+
+					<div class="row d-flex justify-content-start">
+						<div class="col-lg-2 col-md-3 col-sm-5 input-group">
+
+								<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">TEXT</div>
+    							</div>
+								<select class="custom-select" ng-options = "g as g.gradeDesc for g in grades" ng-model = "head_data.txtstock" ng-change="calcTCwt()"></select>
+						</div>
+
+						<div class="col-lg-2 col-md-3 col-sm-5 input-group">
+								
+								<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Sheet Size</div>
+    							</div>
+								<select class="custom-select" ng-options = "s as s.sizeDesc for s in sizes" ng-model = "head_data.txtsize" ng-change="calcTCwt()"></select>
+						</div>
+
+						<div class="col-lg-2 col-md-3 col-sm-5 input-group">
+
+								<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Colors side-1</div>
+    							</div>
+								<select class="custom-select" ng-options = "c for c in colors" ng-model = "head_data.txtcolor1" ></select>
+						</div>
+
+						<div class="col-lg-2 col-md-3 col-sm-5 input-group ">
+
+								<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Colors side-2</div>
+    							</div>
+								<select class="custom-select" ng-options = "c for c in colors" ng-model = "head_data.txtcolor2" ></select>
+						</div>
+
+					</div> 
+
+					<hr>
+
+					<quantity-panel></quantity-panel>
+					
+					<cover-panel></cover-panel>
+
+					<text-panel></text-panel>
+
+					<print-panel></print-panel>
+			</form>
 		</div>
-	</form>
-</div>

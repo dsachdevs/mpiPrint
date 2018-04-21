@@ -1,0 +1,57 @@
+<!-- PRINTING -->
+<div>
+	<h5 class="d-flex justify-content-center border border-dark border-left-0 border-right-0 bg-light text-primary font-weight-bold" data-toggle="collapse"  href="#collapsePrt">PRINTING</h5>
+
+	<div id="collapsePrt" class="collapse show" role="tabpanel">
+		<div class="row">	
+			<!-- left half -->
+			<div class="col-6">
+				<div class="row justify-content-between">
+				<div class="col-7 pt-2 pl-5">
+					<div class="row justify-content-between pt-4">
+						<div class="col-3 input-group-text p-0 mb-2" ng-repeat="i in prt_parm_lang">{{ i }}</div>
+					</div>
+					<div class="row justify-content-between " ng-repeat="i in getNumber(number)">
+						<input class="form-control col-3 p-0 mb-2" type="text" ng-repeat="i in prt_parm_arr" ng-model="prt_parm_arr[$index][$parent.$index]" readonly tabindex="-1">
+					</div>
+				</div>
+
+			<!-- user parms -->
+				<div class="col-2 p-0 pt-4 pl-3 mt-5">
+						<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in getNumber(number)" ng-model="prt_user_parm[$index]" ng-change="calcPrtParm()">
+				</div>
+
+			<!-- lang -->
+				<div class="col-3">
+					<div class="justify-content-end border border-white mb-2 " ng-repeat="i in prt_lang">
+						<div class="text-right"> {{ i }} </div>
+					</div>
+				</div>
+			</div>
+			</div>
+
+			<!-- right half -->
+			<div class="col-6 d-flex">
+				<div class="col-3" ng-repeat="i in getNumber(number)" >
+					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in prt_arr" ng-change = "" ng-model="prt_arr[$index][$parent.$index]">
+				</div>
+			</div>
+
+		</div>	
+	</div>
+
+	<!-- Total printing -->
+	<div class="row">
+		<!-- left side -->
+		<div class="col-6">
+			<div class="row justify-content-end mb-2">
+				<div class="col-4 text-right font-weight-bold">Total Printing</div>
+			</div>
+		</div>
+		<!-- right half -->
+		<div class="col-6 d-flex">	
+			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="prt_tot[$index]" readonly tabindex="-1"></div>	
+		</div>
+
+	</div>
+</div>

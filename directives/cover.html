@@ -1,0 +1,93 @@
+<!-- COVER -->
+<div id="covernav">
+	<h5 class="d-flex justify-content-center border border-dark border-left-0 border-right-0 bg-light text-primary font-weight-bold" data-toggle="collapse"  href="#collapseOne">COVER</h5>
+
+	<div id="collapseOne" class="collapse hide" role="tabpanel">
+		<div class="row">
+			<div class="col-6">
+			<!-- left half -->
+				<div class="row justify-content-between">
+					<div class="col-4"> 
+						<div class="input-group">
+							<div class="input-group-prepend">
+ 								 <div class="input-group-text p-0 px-1">#Cover</div>
+							</div>
+						<input class="form-control p-0 px-1" type="text" ng-model="head_data.cvrnos"  readonly tabindex="-1">
+						</div>
+						<div class="input-group">
+							<div class="input-group-prepend">
+ 								 <div class="input-group-text p-0 px-1">$/CWT</div>
+							</div>
+						<input class="form-control p-0 px-1" type="text" ng-model = "cvr_pamrs.cvr_cwt" readonly tabindex="-1">
+						</div>
+						<div class="input-group">
+							<div class="input-group-prepend">
+ 								 <div class="input-group-text p-0 px-1">M Weight</div>
+							</div>
+						<input class="form-control p-0 px-1" type="text" ng-model="cvr_pamrs.cvr_mweight" readonly tabindex="-1">
+						</div>
+						<div class="input-group">
+							<div class="input-group-prepend">
+ 								 <div class="input-group-text p-0 px-1">$/M sheets</div>
+							</div>
+						<input class="form-control p-0 px-1" type="text" ng-model = "cvr_pamrs.cvr_perMillion" readonly tabindex="-1">
+						</div>
+					</div>
+					<!-- ============================================================ -->
+					<div class="col-4">
+						<div class="input-group">
+							<div class="input-group-prepend">
+ 								 <div class="input-group-text p-0 px-1">UP's</div>
+							</div>
+						<input class="form-control p-0 px-1" type="text" ng-model="cvr_pamrs.cvr_ups" readonly tabindex="-1" >
+						</div>
+					</div>
+					<!-- ============================================================ -->
+
+					<div class="col-4">
+						<div class="justify-content-end mb-2 " ng-repeat="i in cvr_lang">
+							<div class="text-right"> {{ i }} </div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- right half -->
+			<div class="col-6 d-flex">
+				<div class="col-3" ng-repeat="i in getNumber(number)" >
+					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in cvr_arr" ng-change = "getTotCvr()" ng-model="cvr_arr[$index][$parent.$index]">
+				</div>
+			</div>								
+		</div>
+
+	<!-- Gross -->
+	<div class="row">
+		<!-- left side -->
+		<div class="col-6">
+			<div class="row justify-content-end mb-2">
+				<div class="col-4 text-right">Gross Sheets</div>
+			</div>
+		</div>
+		<!-- right half -->
+		<div class="col-6 d-flex">	
+			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="cvr_gross[$index]" readonly tabindex="-1"></div>	
+		</div>
+	</div>
+
+
+	</div>
+
+<!-- Cover Cost -->
+	<div class="row">
+		<!-- left side -->
+		<div class="col-6">
+			<div class="row justify-content-end mb-2">
+				<div class="col-4 text-right">Cover Cost</div>
+			</div>
+		</div>
+		<!-- right half -->
+		<div class="col-6 d-flex">	
+			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="cvr_tot[$index]" readonly tabindex="-1"></div>	
+		</div>
+	</div>
+
+</div>
