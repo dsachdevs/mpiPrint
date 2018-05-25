@@ -34,3 +34,12 @@ mpiapp.directive('printPanel', function () {
 		replace: true,
 	}
 })
+
+mpiapp.directive('binderyPanel', function () {
+	/* body... */
+	return {
+		restrict: 'E',
+		templateUrl: 'directives/bindery.html',
+		replace: true,
+	}
+})

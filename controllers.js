@@ -260,10 +260,12 @@ mpiapp.controller('formCntrl', ['$scope','dataStore','apiCalls', function($scope
 
 
 			//Calculating impression 1
-			$scope.prt_arr[0][i]= parseInt($scope.cvr_gross[i]) | 0 + parseInt($scope.txt_gross[i])|0;
+			$scope.prt_arr[0][i]= parseInt($scope.cvr_gross[i]|0) + parseInt($scope.txt_gross[i]|0);
+			// console.log(parseInt($scope.cvr_gross[i]));
+			// console.log(parseInt($scope.txt_gross[i]));
 
 			//Calculating impression 2
-			$scope.prt_arr[1][i]= parseInt($scope.cvr_gross[i]) | 0 + parseInt($scope.txt_gross[i])|0;
+			$scope.prt_arr[1][i]= parseInt($scope.cvr_gross[i]|0) + parseInt($scope.txt_gross[i]|0);
 
 			//calculating plates
 			$scope.prt_arr[2][i]= parseFloat(parseInt($scope.prt_user_parm[0] | 0 ) * 62.5).toFixed(2); 
@@ -279,6 +281,51 @@ mpiapp.controller('formCntrl', ['$scope','dataStore','apiCalls', function($scope
 
 			//calculating total
 			$scope.prt_tot[i] = parseFloat(parseFloat($scope.prt_arr[2][i] ) + parseFloat($scope.prt_arr[3][i]) + parseFloat($scope.prt_arr[4][i]) + parseFloat($scope.prt_arr[5][i])).toFixed(2);
+		}
+
+	}
+
+	//Bindery
+
+	$scope.bnd_cutting = dataStore.dataObj.bindery.bnd_cutting;
+	$scope.bnd_fold_parm = dataStore.dataObj.bindery.bnd_fold_parm;
+	$scope.bnd_fold_pval = dataStore.dataObj.bindery.bnd_fold_pval;
+	$scope.bnd_folding = dataStore.dataObj.bindery.bnd_folding;
+	$scope.bnd_stitching = dataStore.dataObj.bindery.bnd_stitching;
+	$scope.bnd_other = dataStore.dataObj.bindery.bnd_other;
+	$scope.bnd_arr = dataStore.dataObj.bindery.bnd_arr;
+	$scope.bnd_arr2 = dataStore.dataObj.bindery.bnd_arr2;
+	$scope.bnd_tot = dataStore.dataObj.bindery.bnd_tot;
+
+
+	$scope.calcBndParm = function () {
+
+		for(let i = 0; i<4; i++){
+			//calculating cutting
+			$scope.bnd_arr[0][i] = parseFloat(($scope.qty_tot[i]/1000 | 0) * parseFloat($scope.bnd_cutting.RunM|0) + parseFloat($scope.bnd_cutting.MR|0)).toFixed(2);
+
+			//calculating folding
+			$scope.bnd_arr[1][i] = parseFloat(($scope.qty_tot[i]/1000 | 0) * parseFloat($scope.bnd_fold_pval['4pp']|0) * parseFloat($scope.bnd_folding.RunM[0]|0) + parseFloat($scope.bnd_folding.MR[0]|0)).toFixed(2);
+
+			$scope.bnd_arr[2][i] = parseFloat(($scope.qty_tot[i]/1000 | 0) * parseFloat($scope.bnd_fold_pval['8pp']|0) * parseFloat($scope.bnd_folding.RunM[1]|0) + parseFloat($scope.bnd_folding.MR[1]|0)).toFixed(2);
+
+			$scope.bnd_arr[3][i] = parseFloat(($scope.qty_tot[i]/1000 | 0) * parseFloat($scope.bnd_fold_pval['12/16pp']|0) * parseFloat($scope.bnd_folding.RunM[2]|0) + parseFloat($scope.bnd_folding.MR[2]|0)).toFixed(2);
+
+			$scope.bnd_arr[4][i] = parseFloat(($scope.qty_tot[i]/1000 | 0) * parseFloat($scope.bnd_fold_pval['24/32pp']|0) * parseFloat($scope.bnd_folding.RunM[3]|0) + parseFloat($scope.bnd_folding.MR[3]|0)).toFixed(2);
+
+			//Calculating stitching
+			$scope.bnd_arr[5][i] = parseFloat(($scope.qty_tot[i]/1000 | 0) * parseFloat($scope.bnd_stitching.RunM|0) + parseFloat($scope.bnd_stitching.MR|0)).toFixed(2)
+
+			$scope.bnd_tot[i] = 0;
+			//Calculating totals
+			for (var j = 0; j < $scope.bnd_arr.length; j++) {
+				$scope.bnd_tot[i] = parseFloat(parseFloat($scope.bnd_tot[i]|0) + parseFloat($scope.bnd_arr[j][i] | 0)).toFixed(2);
+			}
+
+			for (var j = 0; j < $scope.bnd_arr2.length; j++) {
+				$scope.bnd_tot[i] = parseFloat(parseFloat($scope.bnd_tot[i]|0) + parseFloat($scope.bnd_arr2[j][i] | 0)).toFixed(2);
+			}
+
 		}
 
 	}

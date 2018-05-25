@@ -102,6 +102,19 @@ mpiapp.service('dataStore', ['$q', function($q){
 			prt_user_parm : [],
 			prt_arr : [{Impression1 : []}, {Impression2 : []}, {PlatesMR : []}, {MRWT : []}, {Running1 : []}, {Running2 : []} ],
 			prt_tot : []
+		},
+
+		bindery:{
+			bnd_cutting: {"MR": "", "RunM": ""},
+			bnd_fold_parm: ["4pp", "8pp", "12/16pp", "24/32pp"],
+			bnd_fold_pval: {"4pp" : "" , "8pp" : "", "12/16pp": "", "24/32pp": ""},
+			bnd_folding: {"MR": [], "RunM": []},
+			bnd_stitching: {"MR": "", "RunM": ""},
+			bnd_other: {"Other_Cost1" : "", "Other_Cost2" : "", "Cartoon" : ""},
+			bnd_freight:{"cost": "", "comment": ""},
+			bnd_arr : [{Cutting : []}, {Folding1 : []}, {Folding2 : []}, {Folding3 : []}, {Folding4 : []}, {Stitching : []} ],
+			bnd_arr2 : [{OtherCost : []}, {OtherCost : []}, {Cartoon : []}, {Freight : []}],
+			bnd_tot : []
 		}
 
 	};

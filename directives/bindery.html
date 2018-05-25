@@ -1,0 +1,119 @@
+<!-- Bindery -->
+<div>
+	<h5 class="d-flex justify-content-center border border-dark border-left-0 border-right-0 bg-light text-primary font-weight-bold" data-toggle="collapse"  href="#collapseBnd">BINDERY</h5>
+
+	<div id="collapseBnd" class="collapse show" role="tabpanel">
+		<div class="row">
+			<!-- left half -->
+			<div class="col-6">		
+			<!-- cutting -->
+				<div class="row justify-content-between">
+					<div class="col-2 text-center font-weight-bold">Cutting</div>
+					<div class="col-7 row">
+						<div class="col-6 input-group">
+							<div class="input-group-prepend">
+	 							<div class="input-group-text p-0 px-1 mb-2">M/R</div>
+							</div>
+							<input class="form-control p-0 px-1 mb-2" aria-describedby="client" type="text"  ng-model="bnd_cutting['MR']" ng-change="calcBndParm()">
+						</div>
+						<div class="col-6 input-group">
+							<div class="input-group-prepend">
+	 							 <div class="input-group-text p-0 px-1 mb-2">Run/M</div>
+							</div>
+							<input class="form-control p-0 px-1 mb-2" aria-describedby="client" type="text"  ng-model="bnd_cutting['RunM']" ng-change="calcBndParm()">
+						</div>
+					</div>
+				</div>
+				<!-- folding -->
+				<div class="row justify-content-between" ng-repeat=" (key, value) in bnd_fold_pval">
+					<div class="col-2 text-center font-weight-bold">Folding</div>
+					<div class="col-3 row input-group">
+						<div class="input-group-prepend">
+							<div class="input-group-text p-0 px-1 mb-2">{{ key }}</div>
+						</div>
+						<input class="form-control p-0 px-1 mb-2" aria-describedby="client" type="text" ng-model="bnd_fold_pval[key]" ng-change="calcBndParm()">
+					</div>
+					<div class="col-7 row">
+						<div class="col-6 input-group">
+							<div class="input-group-prepend">
+	 							<div class="input-group-text p-0 px-1 mb-2">M/R</div>
+							</div>
+							<input class="form-control p-0 px-1 mb-2" aria-describedby="client" type="text"  ng-model="bnd_folding.MR[$index]" ng-change="calcBndParm()">
+						</div>
+						<div class="col-6 input-group">
+							<div class="input-group-prepend">
+	 							 <div class="input-group-text p-0 px-1 mb-2">Run/M</div>
+							</div>
+							<input class="form-control p-0 px-1 mb-2" aria-describedby="client" type="text"  ng-model="bnd_folding.RunM[$index]" ng-change="calcBndParm()">
+						</div>
+					</div>
+				</div>
+
+			<!-- Stitching -->
+				<div class="row justify-content-between">
+					<div class="col-2 text-center font-weight-bold">Stitching</div>
+					<div class="col-7 row">
+						<div class="col-6 input-group">
+							<div class="input-group-prepend">
+	 							<div class="input-group-text p-0 px-1 mb-2">M/R</div>
+							</div>
+							<input class="form-control p-0 px-1 mb-2" aria-describedby="client" type="text" ng-model="bnd_stitching.MR" ng-change="calcBndParm()">
+						</div>
+						<div class="col-6 input-group">
+							<div class="input-group-prepend">
+	 							 <div class="input-group-text p-0 px-1 mb-2">Run/M</div>
+							</div>
+							<input class="form-control p-0 px-1 mb-2" aria-describedby="client" type="text" ng-model="bnd_stitching.RunM" ng-change="calcBndParm()">
+						</div>
+					</div>
+				</div>
+			<!-- Others -->
+				<div class="row justify-content-start" ng-repeat="(okey, ovalue) in bnd_other">
+					<div class="col-3 text-left font-weight-bold">{{ okey }}</div>
+
+					<div class="col-2 input-group p-0 px-1 mb-2">
+						<input class="form-control p-0 px-1" aria-describedby="client" type="text" ng-model="bnd_other[okey]">
+					</div>
+				</div>
+
+			<!-- Freight -->
+				<div class="row justify-content-start">
+					<div class="col-3 text-left font-weight-bold">Freight</div>
+
+					<div class="col-2 p-0 px-1">
+						<input class="form-control p-0 px-1 mb-2" aria-describedby="client" type="text" ng-model="bnd_freight.cost">
+					</div>
+
+					<div class="col-7">
+						<input class="form-control p-0 px-1 mb-2" aria-describedby="client" type="text" ng-model="bnd_freight.comment">
+					</div>
+				</div>
+
+			</div>
+
+			<!-- right half -->
+			<div class="col-6 d-flex">
+				<div class="col-3" ng-repeat="i in getNumber(number)" >
+					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in bnd_arr" readonly ng-model="bnd_arr[$index][$parent.$index]" ng-change="calcBndParm()">
+					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i2 in bnd_arr2" ng-model="bnd_arr2[$index][$parent.$index]" ng-change="calcBndParm()">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Total Bindery -->
+	<div class="row">
+		<!-- left side -->
+		<div class="col-6">
+			<div class="row justify-content-end mb-2">
+				<div class="col-4 text-right font-weight-bold">Total Bindery</div>
+			</div>
+		</div>
+		<!-- right half -->
+		<div class="col-6 d-flex">	
+			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="bnd_tot[$index]" readonly tabindex="-1"></div>	
+		</div>
+
+	</div>
+
+</div>

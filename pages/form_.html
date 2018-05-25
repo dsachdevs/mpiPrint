@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>mpi print - get a quote</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
-
-<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
-</head>
-<body>
-
 	<div class="container border rounded" >
 
 			<div class="row d-flex justify-content-between align-items-end " >
@@ -33,7 +22,7 @@
 							<div class="input-group-prepend">
    								<div class="input-group-text p-1">Quote# </div>
   							</div>
-								<input class="form-control p-1" aria-describedby="quote" type="text">
+								<input class="form-control p-1" aria-describedby="quote" type="text" ng-model="data.heading.quote">
 						</div>
 					</div>
 
@@ -55,7 +44,7 @@
 					</div>
 
 					<div class="row d-flex justify-content-between">
-						<div class="col-lg-6 col-md-7 input-group mb-2 mr-sm-2">
+						<div class="col-lg-5 col-md-6 input-group mb-2 mr-sm-2">
     							<div class="input-group-prepend">
      								 <div class="input-group-text p-1">Specs</div>
     							</div>
@@ -65,6 +54,24 @@
 						<div class="col-lg-3 col-md-4 input-group mb-2 mr-sm-2">
     							<div class="input-group-prepend">
      								 <div class="input-group-text p-1">Trim size</div>
+    							</div>
+								<input class="form-control p-1" aria-describedby="client" type="text">
+						</div>
+					</div>
+
+					<div class="row justify-content-between">
+						<div class="col-lg-5 col-md-6 input-group mb-2 mr-sm-2">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Specs</div>
+    							</div>
+								<input class="form-control p-1" aria-describedby="client" type="text">
+						</div>
+					</div>
+
+					<div class="row justify-content-between">
+						<div class="col-lg-5 col-md-6 input-group mb-2 mr-sm-2">
+    							<div class="input-group-prepend">
+     								 <div class="input-group-text p-1">Specs</div>
     							</div>
 								<input class="form-control p-1" aria-describedby="client" type="text">
 						</div>
@@ -87,12 +94,16 @@
 						</div>
 					</div>
 
-					<div class="row d-flex justify-content-start mb-2">
+					<div class="row justify-content-start mb-2">
 						<div class="col-lg-2 col-md-3 col-sm-5 input-group ">
     							<div class="input-group-prepend">
-     								 <div class="input-group-text p-1">Stock COVER</div>
+     								 <div class="input-group-text p-1">COVER</div>
     							</div>
-								<input class="form-control p-1" aria-describedby="client" type="text">
+								<!-- <input class="form-control p-1" aria-describedby="client" type="text"> -->
+								<select class="custom-select">
+									<option value="50lb Gloss text" selected="50lb Gloss text">50lb Gloss text</option>
+									<option value="60lb Gloss text">60lb Gloss text</option>
+								</select>
 
 						</div>
 
@@ -122,14 +133,22 @@
 								<div class="input-group-prepend">
      								 <div class="input-group-text p-1">UV/Varnish</div>
     							</div>
-								<input class="form-control p-1" aria-describedby="client" type="text">
+								<!-- <input class="form-control p-1" aria-describedby="client" type="text"> -->
+								<select class="custom-select">
+									<option value="N" selected="N">N</option>
+									<option value="Y">Y</option>
+								</select>
 							</div>
 
 						<div class="col-lg-2 col-md-3 col-sm-5 offset-lg-0 input-group ">
 								<div class="input-group-prepend">
      								 <div class="input-group-text p-1">AQ</div>
     							</div>
-								<input class="form-control p-1" aria-describedby="client" type="text">
+								<!-- <input class="form-control p-1" aria-describedby="client" type="text"> -->
+								<select class="custom-select">
+									<option value="N" selected="N">N</option>
+									<option value="Y">Y</option>
+								</select>
 							</div>
 						</div>
 
@@ -137,7 +156,7 @@
 						<div class="col-lg-2 col-md-3 col-sm-5 input-group">
 
 								<div class="input-group-prepend">
-     								 <div class="input-group-text p-1">Stock TEXT</div>
+     								 <div class="input-group-text p-1">TEXT</div>
     							</div>
 								<input class="form-control p-1" aria-describedby="client" type="text">
 						</div>
@@ -194,10 +213,10 @@
 							<div class="col-6">
 							<!-- right half -->	
 								<div class="row justify-content-around mb-1">
-									<input class="form-control col-2 p-0 px-1" type="text">
-									<input class="form-control col-2 p-0 px-1" type="text">
-									<input class="form-control col-2 p-0 px-1" type="text">
-									<input class="form-control col-2 p-0 px-1" type="text">
+									<input class="form-control col-2 p-0 px-1" type="text" ng-change = "myfunction()" ng-model="qty_eng">
+									<input class="form-control col-2 p-0 px-1" type="text" ng-model="qty_fren">
+									<input class="form-control col-2 p-0 px-1" type="text" ng-model="qty_othr">
+									<input class="form-control col-2 p-0 px-1" type="text" ng-model="qty_tot">
 								</div>
 								<div class="row justify-content-around mb-1">
 									<input class="form-control col-2 p-0 px-1" type="text">
@@ -819,9 +838,3 @@
 				</div>
 			</form>
 	</div>
-<!-- JQUERY for bootstrap! -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-</body>
-</html>
