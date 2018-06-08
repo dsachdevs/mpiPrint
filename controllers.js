@@ -34,7 +34,11 @@ mpiapp.controller('loginCntrl', ['$scope', '$location','login', 'maintainCookie'
 }]);
 
 
-mpiapp.controller('landingCntrl', ['$scope', '$location','login', 'maintainCookie', function($scope, $location, login, maintainCookie){
+mpiapp.controller('landingCntrl', ['$scope', 'maintainCookie', function($scope, maintainCookie){
+
+$scope.loggedUser = maintainCookie.getCookie();
+
+
 }]);
 
 
