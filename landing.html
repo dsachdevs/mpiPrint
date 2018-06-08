@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html style="height: 100%;"> <!-- I'll create a CSS file later, Promise! -->
+<head>
+	<title>mpi print - login</title>
+	<meta charset="utf-8">
+	<!-- Bootstrap! but I still hate thousands of unnecessary DIVs -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+</head>
+<body class="h-100" ">
+
+	<div class="h-100" ng-view>
+
+		<nav class="navbar navbar-expand navbar-light border border-secondary border-top-0 border-left-0 border-right-0 mb-5">
+		  <img src="./images/mpi_logo.png" alt="MPI logo" class="navbar-brand img-fluid p-0" style="min-width: 80px; max-width: 10%; max-height: auto;">
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+		    <ul class="navbar-nav mr-auto">
+		      <li class="nav-item">
+		        <a class="nav-link font-weight-bold" href="#!landing">Home<span class="sr-only">(current)</span></a>
+		      </li>
+		      <li class="nav-item">
+		        <a class="nav-link font-weight-bold" href="#!login">Logout</a>
+		      </li>
+		    </ul>
+		    <form class="form-inline my-2 mr-4 text-primary">
+		      <h5> <span> Welcome </span> <span class="text-capitalize">Ajit!</span></h5>
+		    </form>
+		  </div>
+		  <!-- <hr> -->
+		</nav>
+<br>
+		<div class="row d-flex justify-content-center">
+			<div class="col-3 border border-dark rounded p-1 shadow ">		
+				<div class="row d-flex justify-content-between align-items-center">
+					<div class="col-4 p-0 ">
+						<img src="./images/new-quote.png" alt="New Quote Icon" class="img-fluid pt-1">
+					</div>
+					<div class="col-8 p-0">
+						<div class="row d-flex justify-content-center ">
+							<h5 class="font-weight-bold" style="color: orange">New Quote</h5>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<div class="col-3 p-0 font-weight-bold text-muted">
+								#Quotes
+							</div>
+
+							<div class="col-2 p-0">
+								<input type="radio" name="quotes" id="q1" value="1" >   
+								<label for="q1">1</label>
+							</div>
+
+							<div class="col-2 p-0">
+								<input type="radio" name="quotes" id="q2" value="2">   
+								<label for="q2">2</label>
+							</div>
+							<div class="col-2 p-0">
+								<input type="radio" name="quotes" id="q3" value="3">   
+								<label for="q3">3</label>
+							</div>
+							<div class="col-2 p-0">
+								<input type="radio" name="quotes" id="q4" value="4" checked="checked">   
+								<label for="q4">4</label>
+							</div>
+						</div>
+						<div class="row d-flex justify-content-center">
+							<a type="button" class="col-4 text-center mx-2 font-weight-bold btn btn-primary" href="#!newQuote" >Proceed</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-3 offset-1 border border-dark rounded p-1">		
+				<div class="row d-flex justify-content-between align-items-center">
+					<div class="col-4 p-0 ">
+						<img src="./images/search-quote.png" alt="New Quote Icon" class="img-fluid pt-1">
+					</div>
+					<div class="col-8 p-0">
+						<div class="row d-flex justify-content-center ">
+							<h5 class="font-weight-bold" style="color: orange">Search Quote</h5>
+						</div>
+
+						<div class="row d-flex justify-content-center m-0 mb-2">
+							<div class="col-6 p-0">
+								<input class="p-0 px-1 form-control" type="text"  maxlength="8" placeholder="Quote#">
+							</div>
+						</div>
+
+						<div class="row d-flex justify-content-center">
+							<button type="button" class="col-4 text-center mx-2 font-weight-bold btn btn-primary" ng-click="">Search</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+<!-- JQUERY because bootstrap needs companion! -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	
+</body>
+</html>

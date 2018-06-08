@@ -2,7 +2,7 @@
 <div>
 	<h5 class="d-flex justify-content-center border border-dark border-left-0 border-right-0 bg-light text-primary font-weight-bold" data-toggle="collapse"  href="#collapseBnd">BINDERY</h5>
 
-	<div id="collapseBnd" class="collapse show" role="tabpanel">
+	<div id="collapseBnd" class="collapse show" role="tabpanel" ng-class="SkipPrint" >
 		<div class="row">
 			<!-- left half -->
 			<div class="col-6">		
@@ -68,11 +68,18 @@
 					</div>
 				</div>
 			<!-- Others -->
-				<div class="row justify-content-start" ng-repeat="(okey, ovalue) in bnd_other">
+				<div class="row justify-content-start" ng-repeat="(okey, ovalue) in bnd_other.bnd_other_cost">
 					<div class="col-3 text-left font-weight-bold">{{ okey }}</div>
 
-					<div class="col-2 input-group p-0 px-1 mb-2">
+<!-- 					<div class="col-2 input-group p-0 px-1 mb-2">
 						<input class="form-control p-0 px-1" aria-describedby="client" type="text" ng-model="bnd_other[okey]">
+					</div> -->
+					<div class="col-2 p-0 px-1">
+						<input class="form-control p-0 px-1 mb-2" aria-describedby="client" type="text" ng-model="bnd_other.bnd_other_cost[okey]">
+					</div>
+
+					<div class="col-7">
+						<input class="form-control p-0 px-1 mb-2" aria-describedby="client" type="text" ng-model="bnd_other.bnd_other_comment[$index]">
 					</div>
 				</div>
 

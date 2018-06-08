@@ -1,4 +1,34 @@
 //Directives
+mpiapp.directive('navBar', function () {
+	/* body... */
+	return {
+		restrict: 'E',
+		templateUrl: 'directives/navbar.html',
+		replace: true,
+		scope:{
+			loggeduser: "="
+		}
+	}
+})
+
+mpiapp.directive('titlePanel', function () {
+	/* body... */
+	return {
+		restrict: 'E',
+		templateUrl: 'directives/title.html',
+		replace: true,
+	}
+})
+
+mpiapp.directive('headPanel', function () {
+	/* body... */
+	return {
+		restrict: 'E',
+		templateUrl: 'directives/head.html',
+		replace: true,
+	}
+})
+
 mpiapp.directive('quantityPanel', function () {
 	/* body... */
 	return {
@@ -43,3 +73,37 @@ mpiapp.directive('binderyPanel', function () {
 		replace: true,
 	}
 })
+
+mpiapp.directive('totalPanel', function () {
+	/* body... */
+	return {
+		restrict: 'E',
+		templateUrl: 'directives/totals.html',
+		replace: true,
+	}
+})
+
+mpiapp.directive('footerPanel', function () {
+	/* body... */
+	return {
+		restrict: 'E',
+		templateUrl: 'directives/footer.html',
+		replace: true,
+	}
+})
+
+mpiapp.directive('formattedDate', function(dateFilter) {
+  return {
+    require: 'ngModel',
+    scope: {
+      format: "="
+    },
+    link: function(scope, element, attrs, ngModelController) {
+
+      ngModelController.$formatters.push(function(data) {
+        //convert data from model format to view format
+        return dateFilter(data, scope.format); //converted
+      });
+    }
+  }
+});

@@ -54,11 +54,14 @@ mpiapp.service('dataStore', ['$q', function($q){
 
 	this.dataObj = {
 		heading : {
+			user : "",
 			quote : "1234",
+			parent : "",
 			date : "",
 			client : "",
 			specs : ["","",""],
-			trimsize : "",
+			trimW : "",
+			trimH : "",
 			txtnos : 0,
 			cvrnos : 0,
 			cvrstock : "",
@@ -110,12 +113,15 @@ mpiapp.service('dataStore', ['$q', function($q){
 			bnd_fold_pval: {"4pp" : "" , "8pp" : "", "12/16pp": "", "24/32pp": ""},
 			bnd_folding: {"MR": [], "RunM": []},
 			bnd_stitching: {"MR": "", "RunM": ""},
-			bnd_other: {"Other_Cost1" : "", "Other_Cost2" : "", "Cartoon" : ""},
+			bnd_other : {bnd_other_cost: {"Other_Cost1" : "", "Other_Cost2" : "", "Cartoon" : ""}, bnd_other_comment: []},
 			bnd_freight:{"cost": "", "comment": ""},
 			bnd_arr : [{Cutting : []}, {Folding1 : []}, {Folding2 : []}, {Folding3 : []}, {Folding4 : []}, {Stitching : []} ],
 			bnd_arr2 : [{OtherCost : []}, {OtherCost : []}, {Cartoon : []}, {Freight : []}],
 			bnd_tot : []
-		}
+		},
+		
+		totals : []
+
 
 	};
 	

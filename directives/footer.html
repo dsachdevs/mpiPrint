@@ -1,0 +1,24 @@
+	<!-- Entire Total -->
+	<div>
+		<div class="alert border-danger text-center" role="alert">
+  			<strong>Pricing</strong> stands good for <strong>30 Days</strong>.
+  			<br>
+  			All <strong>freight is approximated</strong> as dock to dock and is <strong>subject to change</strong>.
+		</div>
+
+		<div class="row justify-content-center d-print-none mb-3" >
+			<button type="button" class="col-2 text-center mx-2 font-weight-bold btn btn-primary" ng-click="save_quote()" ng-disabled="printReady == true">Save Quote</button>
+
+			<button type="button" class="col-2 text-center mx-2 font-weight-bold btn btn-primary" ng-click="printToCart('d-print-none')" ng-disabled="printReady == false">Print Customer Copy</button>
+
+			<button type="button" class="col-2 text-center mx-2 font-weight-bold btn btn-primary" ng-click="printToCart('')" ng-disabled="printReady == false">Print Full Copy</button>
+		</div>
+
+		<div class="row justify-content-center d-print-none" >
+			<div class="alert alert-warning text-center p-1 px-3" role="alert"> {{footerMessage}}
+			</div>
+		</div>
+
+	</div>
+
+

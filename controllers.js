@@ -13,7 +13,7 @@ mpiapp.controller('loginCntrl', ['$scope', '$location','login', 'maintainCookie'
 					function(data){
 						if(data.status == 200){
 								maintainCookie.setCookie($scope.user);
-								$location.path('/newQuote');
+								$location.path('/landing');
 							}
 							else if(data.status == 404){
 								$scope.error = "Invalid Username/Password";
@@ -33,7 +33,12 @@ mpiapp.controller('loginCntrl', ['$scope', '$location','login', 'maintainCookie'
 		}
 }]);
 
-mpiapp.controller('formCntrl', ['$scope','dataStore','apiCalls', function($scope, dataStore, apiCalls){
+
+mpiapp.controller('landingCntrl', ['$scope', '$location','login', 'maintainCookie', function($scope, $location, login, maintainCookie){
+}]);
+
+
+mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls', function($scope,$timeout, dataStore, apiCalls){
 
 	$scope.number = 4;
 	$scope.getNumber = function(num) {
@@ -44,6 +49,7 @@ mpiapp.controller('formCntrl', ['$scope','dataStore','apiCalls', function($scope
 	$scope.colors = [1,2,3,4,5,6,7,8];
 	$scope.YNopt = ['Y', 'N'];
 	$scope.head_data = dataStore.dataObj.heading;
+	$scope.head_data.date = new Date();
 	apiCalls.getGradeAndSize()
 					.getData ({},
 					function(data){
@@ -281,6 +287,8 @@ mpiapp.controller('formCntrl', ['$scope','dataStore','apiCalls', function($scope
 
 			//calculating total
 			$scope.prt_tot[i] = parseFloat(parseFloat($scope.prt_arr[2][i] ) + parseFloat($scope.prt_arr[3][i]) + parseFloat($scope.prt_arr[4][i]) + parseFloat($scope.prt_arr[5][i])).toFixed(2);
+
+
 		}
 
 	}
@@ -327,7 +335,53 @@ mpiapp.controller('formCntrl', ['$scope','dataStore','apiCalls', function($scope
 			}
 
 		}
+		$scope.calc_totals();
 
+	}
+
+	//Final total
+
+	$scope.totals = dataStore.dataObj.totals;
+
+	$scope.calc_totals = function () {
+		// body... 
+		for(let i = 0; i<4; i++){
+			let temp = parseFloat((parseFloat($scope.cvr_tot[i])) + (parseFloat($scope.txt_tot[i])) + (parseFloat($scope.prt_tot[i])) + (parseFloat($scope.bnd_tot[i]))).toFixed(2);
+			if(!isNaN(temp))
+				$scope.totals[i] = temp;
+		}
+
+	}
+
+	//Footer
+	//message
+	$scope.footerMessage = "Please save the quote in order to print it.";
+
+	//Save function
+	$scope.printReady = false;
+	$scope.save_quote = function () {
+		// body... 
+		$('.collapse').collapse('hide');
+		$scope.footerMessage = "Quote saved and ready for print!";
+		$scope.printReady = true;
+	}
+
+	//print function
+	$scope.printToCart = function(data) {
+     // var originalContents = document.body.innerHTML;
+     if(data == 'd-print-none'){
+     	$('.collapse').collapse('hide');
+     }
+     else{
+     	$('.collapse').collapse('show');
+     }
+     $scope.SkipPrint=data;     
+     $timeout(function(){
+	 window.print();
+	});
+
+     return false;
+     // document.body.innerHTML = originalContents;
 	}
 
 }]);

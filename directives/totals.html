@@ -1,0 +1,23 @@
+	<!-- Entire Total -->
+	<div class="row">
+		<!-- left side -->
+		<div class="col-6">
+			<div class="row justify-content-end mb-2">
+				<div class="col-4 text-right"> 
+					<input type="radio" name="CURR" id="CAD" value="1" checked="checked">   
+					<label for="CAD">CAD</label>
+					<input type="radio" name="CURR" id="USD" value="1">
+					<label for="USD">USD</label>
+				</div>
+				<div class="col-2"> 
+					<input class="form-control p-0 px-1 mb-2 text-center" type="text" value="1" placeholder="Ex-Rate">
+				</div>
+				<div class="col-2 text-right font-weight-bold">TOTAL</div>
+			</div>
+		</div>
+		<!-- right half -->
+		<div class="col-6 d-flex">	
+			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="totals[$index]" readonly tabindex="-1"></div>	
+		</div>
+
+	</div>
