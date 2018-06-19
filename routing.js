@@ -6,7 +6,6 @@ mpiapp.config(['$routeProvider', '$httpProvider', function($routeProvider, $http
 		controller: 'loginCntrl'
 	})
 
-	$routeProvider
 	.when('/landing',{
 		templateUrl: 'pages/landing.html',
 		controller: 'landingCntrl'
@@ -15,6 +14,11 @@ mpiapp.config(['$routeProvider', '$httpProvider', function($routeProvider, $http
 	.when('/newQuote',{
 		templateUrl: 'pages/form.html',
 		controller: 'formCntrl'
+	})
+
+	.when('/adminPanel',{
+		templateUrl: 'pages/admin.html',
+		controller: 'adminCntrl'
 	})
 
 

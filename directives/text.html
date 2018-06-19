@@ -12,25 +12,25 @@
 							<div class="input-group-prepend">
  								 <div class="input-group-text p-0 px-1">#Text</div>
 							</div>
-						<input class="form-control p-0 px-1" type="text" ng-model="head_data.txtnos"  readonly tabindex="-1">
+						<input class="form-control p-0 px-1" type="text" ng-model="dataStore.heading.txtnos"  readonly tabindex="-1">
 						</div>
 						<div class="input-group">
 							<div class="input-group-prepend">
  								 <div class="input-group-text p-0 px-1">$/CWT</div>
 							</div>
-						<input class="form-control p-0 px-1" type="text" ng-model = "txt_pamrs.txt_cwt" readonly tabindex="-1">
+						<input class="form-control p-0 px-1" type="text" ng-model = "dataStore.text.txt_parms.txt_cwt" readonly tabindex="-1">
 						</div>
 						<div class="input-group">
 							<div class="input-group-prepend">
  								 <div class="input-group-text p-0 px-1">M Weight</div>
 							</div>
-						<input class="form-control p-0 px-1" type="text" ng-model="txt_pamrs.txt_mweight" readonly tabindex="-1">
+						<input class="form-control p-0 px-1" type="text" ng-model="dataStore.text.txt_parms.txt_mweight" readonly tabindex="-1">
 						</div>
 						<div class="input-group">
 							<div class="input-group-prepend">
  								 <div class="input-group-text p-0 px-1">$/M sheets</div>
 							</div>
-						<input class="form-control p-0 px-1" type="text" ng-model = "txt_pamrs.txt_perMillion" readonly tabindex="-1">
+						<input class="form-control p-0 px-1" type="text" ng-model = "dataStore.text.txt_parms.txt_perMillion" readonly tabindex="-1">
 						</div>
 					</div>
 					<!-- ============================================================ -->
@@ -39,13 +39,13 @@
 							<div class="input-group-prepend">
  								 <div class="input-group-text p-0 px-1">UP's</div>
 							</div>
-						<input class="form-control p-0 px-1" type="text" ng-model="txt_pamrs.txt_ups" readonly tabindex="-1" >
+						<input class="form-control p-0 px-1" type="text" ng-model="dataStore.text.txt_parms.txt_ups" readonly tabindex="-1" >
 						</div>
 					</div>
 					<!-- ============================================================ -->
 
 					<div class="col-4">
-						<div class="justify-content-end mb-2 " ng-repeat="i in txt_lang">
+						<div class="justify-content-end mb-2 " ng-repeat="i in dataStore.text.txt_lang">
 							<div class="text-right"> {{ i }} </div>
 						</div>
 					</div>
@@ -54,7 +54,7 @@
 			<!-- right half -->
 			<div class="col-6 d-flex">
 				<div class="col-3" ng-repeat="i in getNumber(number)" >
-					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in txt_arr" ng-model="txt_arr[$index][$parent.$index]">
+					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in dataStore.text.txt_arr" ng-change = "getTotTxt()" ng-model="dataStore.text.txt_arr[$index][$parent.$index]">
 				</div>
 			</div>								
 		</div>
@@ -69,7 +69,7 @@
 		</div>
 		<!-- right half -->
 		<div class="col-6 d-flex">	
-			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="txt_gross[$index]" readonly tabindex="-1"></div>	
+			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="dataStore.text.txt_gross[$index]" readonly tabindex="-1"></div>	
 		</div>
 	</div>
 
@@ -86,7 +86,7 @@
 		</div>
 		<!-- right half -->
 		<div class="col-6 d-flex">	
-			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="txt_tot[$index]" readonly tabindex="-1"></div>	
+			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="dataStore.text.txt_tot[$index]" readonly tabindex="-1"></div>	
 		</div>
 	</div>
 

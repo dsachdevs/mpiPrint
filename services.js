@@ -21,6 +21,29 @@ mpiapp.service('maintainCookie', ['$cookies', function($cookies){
 	}
 }]);
 
+
+mpiapp.service('maintainQuote', ['$cookies', function($cookies){
+
+	var quotenos ="";
+
+	return {
+		setQuote: function (quotenos) {
+			let date = new Date();
+			date.setTime(date.getTime() + (30*60*1000));
+			$cookies.put("quotenos", quotenos, {"expires" : date } );
+		},
+		getQuote: function () {
+			quotenos = $cookies.get("quotenos");
+            return quotenos;
+		},
+		clearQuote: function () {
+			quotenos="";
+			$cookies.remove("quotenos");
+		}
+	}
+}]);
+
+
 mpiapp.service('login', ['$resource','$q', function($resource,$q){
 	
 	this.logMeIn =  function(){
@@ -36,14 +59,46 @@ mpiapp.service('login', ['$resource','$q', function($resource,$q){
 }]);
 
 mpiapp.service('apiCalls', ['$resource', function($resource){
-	
-	this.getGradeAndSize =  function(){
-		return $resource('http://localhost:3000/api/v1/GradesAndSize',{}, {
-			getData: {
-				method: 'GET',
-				isArray: false,
-			}
-		});
+	return {
+		getGradeAndSize : function(){
+			return $resource('http://localhost:3000/api/v1/GradesAndSize',{}, {
+				getData: {
+					method: 'GET',
+					isArray: false,
+					}
+				});
+		},
+		saveQuote : function(){
+			return $resource('http://localhost:3000/api/v1/save_quote',{}, {
+				saveData: {
+					method: 'POST',
+					isArray: false,
+					}
+				});
+		},
+
+		// getCWT : function(){
+		// 	return $resource('http://localhost:3000/api/v1/getCWT',{}, {
+		// 		getData: {
+		// 			method: 'GET',
+		// 			isArray: false,
+		// 			}
+		// 		});
+		// },
+
+		configCWT : function(){
+			return $resource('http://localhost:3000/api/v1/configCWT',{}, {
+				setData: {
+					method: 'POST',
+					isArray: false,
+					},
+
+				getData: {
+					method: 'GET',
+					isArray: false,
+					}
+				});
+		},
 
 	}
 
@@ -52,11 +107,13 @@ mpiapp.service('apiCalls', ['$resource', function($resource){
 
 mpiapp.service('dataStore', ['$q', function($q){
 
+	this.quotenos = 0;
+
 	this.dataObj = {
 		heading : {
-			user : "",
-			quote : "1234",
-			parent : "",
+			loggeduser : "",
+			quote : "00000",
+			parent : "00000",
 			date : "",
 			client : "",
 			specs : ["","",""],
@@ -120,9 +177,12 @@ mpiapp.service('dataStore', ['$q', function($q){
 			bnd_tot : []
 		},
 		
-		totals : []
-
-
+		totals : {
+			ex_rate: 0,
+			currency: "",
+			total: [],
+			cvt_total: []
+		}
 	};
 	
 }]);

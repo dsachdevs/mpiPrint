@@ -9,21 +9,21 @@
 				<div class="row justify-content-between">
 				<div class="col-7 pt-2 pl-5">
 					<div class="row justify-content-between pt-4">
-						<div class="col-3 input-group-text p-0 mb-2	" ng-repeat="i in prt_parm_lang">{{ i }}</div>
+						<div class="col-3 input-group-text p-0 mb-2	" ng-repeat="i in dataStore.print.prt_parm_lang">{{ i }}</div>
 					</div>
 					<div class="row justify-content-between " ng-repeat="i in getNumber(number)">
-						<input class="form-control col-3 p-0 mb-2" type="text" ng-repeat="i in prt_parm_arr" ng-model="prt_parm_arr[$index][$parent.$index]" readonly tabindex="-1">
+						<input class="form-control col-3 p-0 mb-2" type="text" ng-repeat="i in dataStore.print.prt_parm_arr" ng-model="dataStore.print.prt_parm_arr[$index][$parent.$index]" readonly tabindex="-1">
 					</div>
 				</div>
 
 			<!-- user parms -->
 				<div class="col-2 p-0 pt-4 pl-3 mt-5">
-						<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in getNumber(number)" ng-model="prt_user_parm[$index]" ng-change="calcPrtParm()">
+						<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in [1, 2, 3, 4]" ng-model="dataStore.print.prt_user_parm[$index]" ng-change="calcPrtParm()">
 				</div>
 
 			<!-- lang -->
 				<div class="col-3">
-					<div class="justify-content-end border border-white mb-2 " ng-repeat="i in prt_lang">
+					<div class="justify-content-end border border-white mb-2 " ng-repeat="i in dataStore.print.prt_lang">
 						<div class="text-right"> {{ i }} </div>
 					</div>
 				</div>
@@ -33,7 +33,7 @@
 			<!-- right half -->
 			<div class="col-6 d-flex">
 				<div class="col-3" ng-repeat="i in getNumber(number)" >
-					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in prt_arr" ng-change = "" ng-model="prt_arr[$index][$parent.$index]">
+					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in dataStore.print.prt_arr" ng-change = "" ng-model="dataStore.print.prt_arr[$index][$parent.$index]">
 				</div>
 			</div>
 
@@ -50,7 +50,7 @@
 		</div>
 		<!-- right half -->
 		<div class="col-6 d-flex">	
-			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="prt_tot[$index]" readonly tabindex="-1"></div>	
+			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="dataStore.print.prt_tot[$index]" readonly tabindex="-1"></div>	
 		</div>
 
 	</div>

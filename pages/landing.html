@@ -1,4 +1,4 @@
-<nav-bar></nav-bar>
+<nav-bar ></nav-bar>
 
 	<br>
 	<div class="row d-flex justify-content-center ">
@@ -17,7 +17,7 @@
 						</div>
 
 						<div class="col-2 p-0">
-							<input type="radio" name="quotes" id="q1" value="1" >   
+							<input type="radio" name="quotes" id="q1" value="1" checked="checked">   
 							<label for="q1">1</label>
 						</div>
 
@@ -30,12 +30,13 @@
 							<label for="q3">3</label>
 						</div>
 						<div class="col-2 p-0">
-							<input type="radio" name="quotes" id="q4" value="4" checked="checked">   
+							<input type="radio" name="quotes" id="q4" value="4">   
 							<label for="q4">4</label>
 						</div>
 					</div>
 					<div class="row d-flex justify-content-center">
-						<a type="button" class="col-4 text-center mx-2 font-weight-bold btn btn-primary" href="#!newQuote" >Proceed</a>
+						<a type="button" class="col-4 text-center mx-2 font-weight-bold btn btn-primary" href="#!newQuote" ng-click="proceed()">Proceed</a>
+
 					</div>
 				</div>
 			</div>

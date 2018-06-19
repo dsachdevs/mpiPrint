@@ -7,7 +7,7 @@
 							<div class="row">
 								<div class="col-6">
 									<!-- left half -->
-									<div class="row justify-content-end mb-2 " ng-repeat="i in qty_lang">
+									<div class="row justify-content-end mb-2 " ng-repeat="i in dataStore.quantity.qty_lang">
 										<div class="col-4 text-right"> {{ i }} </div>
 									</div>
 								</div>
@@ -15,7 +15,7 @@
 								<div class="col-6 d-flex">
 								<!-- right half -->	
 									<div class="col-3" ng-repeat="i in getNumber(number)" >
-										<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in qty_arr" ng-change = "getTotQnty()" ng-model="qty_arr[$index][$parent.$index]">
+										<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in dataStore.quantity.qty_arr" ng-change = "getTotQnty()" ng-model="dataStore.quantity.qty_arr[$index][$parent.$index]">
 									</div>
 								</div>
 							</div>
@@ -31,7 +31,7 @@
 							</div>
 							<!-- right half -->
 							<div class="col-6 d-flex">	
-								<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1" type="text"  ng-model="qty_tot[$index]" ng-change = "getCvrSht()" readonly tabindex="-1"></div>	
+								<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1" ng-class="{ 'border-danger' : validQuantity == false }" type="text"  ng-model="dataStore.quantity.qty_tot[$index]" ng-change = "getCvrSht()" readonly tabindex="-1"></div>	
 							</div>
 						</div>
 					</div>

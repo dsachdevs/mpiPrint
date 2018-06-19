@@ -86,9 +86,86 @@ router.get('/', function(req, res){
  });
 
 
- router.post('/', function(req, res){
- 	res.send('Post routes on things'); 
+router.post('/v1/save_quote', function(req, res, next){
+ 	// let username = req.body.username;
+ 	// let password = req.body.password;
+ 	function get_quote (callback) {
+ 	sqlconnect.beginTransaction(function(err, res) {
+  		if (err) { throw err; }
+  		sqlconnect.query('SELECT quoteid FROM quote_no FOR UPDATE;', function(err, result) {
+    		if (err) { 
+      			sqlconnect.rollback(function() {
+        		throw err;
+      			});
+   		 	}
+ 
+			let quote_id = result[0].quoteid;
+			callback(quote_id);
+			// console.log(quote_id);	
+ 
+	   		sqlconnect.query('UPDATE quote_no SET quoteid = quoteid + 1', function(err, result, quote_id) {
+	      		if (err) { 
+	        		sqlconnect.rollback(function() {
+	          		throw err;
+	        		});
+	      		}  
+		      	sqlconnect.commit(function(err) {
+		        	if (err) { 
+		          		sqlconnect.rollback(function() {
+		            	throw err;
+		        		});
+		        	}
+		        	console.log('Transaction Complete.');
+		        	// connection.end();
+		      	});
+	    	});
+  		});
+	});
+ 	}
+
+ 	get_quote(function (quote_id) {
+ 		res.send(JSON.stringify({"status":200, "quoteid": quote_id}));
+ 	})
+
  });
+
+
+  router.post('/v1/configCWT', function(req, res, next){
+ 	let cwt = req.body.cwt;
+
+ 	if(parseInt(cwt) > 0)
+ 	{
+	 	sqlconnect.query('update config_master set cwt = ?', [cwt], function (error, result, fields)
+	 	{
+	 		if(error){
+	 			res.send(JSON.stringify({"status":500, "error":error}));
+	 		} 
+	 		else{
+	 			res.send(JSON.stringify({"status":200, "error":'Update successfull!'}));
+	 		}	
+	 	})
+	 }
+	else
+	{
+	res.send(JSON.stringify({"status":404, "error":'Invalid CWT. Integer value greater than 0 expected.'}));
+	}
+
+ });
+
+router.get('/v1/configCWT', function(req, res, next){
+
+ 	sqlconnect.query('SELECT cwt as cwt from config_master LIMIT 1', function (error, result, fields)
+ 	{
+ 		if(error){
+ 			res.send(JSON.stringify({"status":500, "error":error, "result":'none'}));
+ 		} 
+ 		else {
+ 			res.send(JSON.stringify({"status":200, "error":'none', "result":result[0].cwt}));
+ 		}	
+ 	})	
+
+ });
+
 
 //Export the router
 module.exports = router;
