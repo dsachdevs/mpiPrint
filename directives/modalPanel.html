@@ -1,0 +1,12 @@
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body p-1 px-2 alert-dark rounded border border-dark">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <p class="m-0 mb-1 pb-1 px-2" ng-repeat="(key, value) in modalBody"  ng-class="{ 'font-weight-bold text-center' : key == 0 , 'text-left list-group-item-danger rounded border border-danger' : key > 0}"> {{ value }}</p>
+      </div>
+    </div>
+  </div>
+</div>

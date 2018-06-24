@@ -2,22 +2,22 @@ mpiapp.config(['$routeProvider', '$httpProvider', function($routeProvider, $http
 
 	$routeProvider
 	.when('/login',{
-		templateUrl: 'pages/login.html',
+		templateUrl: 'views/login.html',
 		controller: 'loginCntrl'
 	})
 
 	.when('/landing',{
-		templateUrl: 'pages/landing.html',
+		templateUrl: 'views/landing.html',
 		controller: 'landingCntrl'
 	})
 
 	.when('/newQuote',{
-		templateUrl: 'pages/form.html',
+		templateUrl: 'views/form.html',
 		controller: 'formCntrl'
 	})
 
 	.when('/adminPanel',{
-		templateUrl: 'pages/admin.html',
+		templateUrl: 'views/admin.html',
 		controller: 'adminCntrl'
 	})
 
