@@ -1,4 +1,4 @@
-mpiapp.directive('textPanel', ['coverNtext', 'calculateTotals',  function (coverNtext, calculateTotals) {
+mpiapp.directive('textPanel', ['coverNtext', 'calculateTotals', 'roundUp', function (coverNtext, calculateTotals, roundUp) {
 	/* body... */
 	return {
 		restrict: 'E',
@@ -29,7 +29,7 @@ mpiapp.directive('textPanel', ['coverNtext', 'calculateTotals',  function (cover
 						if(parseInt(scope.dataStore.text.txt_parms.txt_perMillion)>0){
 							//trigger the text sheet calculations
 							scope.getTxtSht();
-							}
+						}
 					})
 				})
 			}
@@ -42,44 +42,44 @@ mpiapp.directive('textPanel', ['coverNtext', 'calculateTotals',  function (cover
 						//calculating net sheets
 						scope.dataStore.text.txt_arr[0][i] = coverNtext.getNetSheets(scope.dataStore.quantity.qty_tot[i], scope.dataStore.text.txt_parms.txt_ups);
 
-						if(scope.roundToTwo(scope.dataStore.text.txt_arr[0][i])>0)
+						if(roundUp.roundToTwo(scope.dataStore.text.txt_arr[0][i])>0)
 						{
 						//calculating press spoils
-							scope.dataStore.text.txt_arr[1][i] = coverNtext.getPressSpoils(scope.dataStore.text.txt_parms.txt_ups);
+						scope.dataStore.text.txt_arr[1][i] = coverNtext.getPressSpoils(scope.dataStore.text.txt_parms.txt_ups);
 
 						//calculating bindary overs
-							scope.dataStore.text.txt_arr[2][i] = coverNtext.getBndOvr(scope.dataStore.quantity.qty_tot[i]);
+						scope.dataStore.text.txt_arr[2][i] = coverNtext.getBndOvr(scope.dataStore.quantity.qty_tot[i]);
 
 						//Calculate totals
-							scope.getTotTxt();
-						}
+						scope.getTotTxt();
 					}
 				}
 			}
+		}
 
-			scope.getTotTxt = function () {
+		scope.getTotTxt = function () {
 
-				for(let i = 0; i<scope.quotenos; i++){
-					if (scope.roundToTwo(scope.dataStore.text.txt_arr[0][i]) > 0) {
+			for(let i = 0; i<scope.quotenos; i++){
+				if (roundUp.roundToTwo(scope.dataStore.text.txt_arr[0][i]) > 0) {
 					//Calculating gross sheets						
-						calculateTotals.verticalAddArray(scope.dataStore.text.txt_arr, scope.dataStore.text.txt_gross)
+					calculateTotals.verticalAddArray(scope.dataStore.text.txt_arr, scope.dataStore.text.txt_gross)
 
 					//calculate the text cost here
-						.then ( function(){
+					.then ( function(){
 						coverNtext.getCost(scope.dataStore.text.txt_parms.txt_perMillion, scope.dataStore.text.txt_gross[i])
-							.then(function (result) {
-								scope.dataStore.text.txt_tot[i] = result;
+						.then(function (result) {
+							scope.dataStore.text.txt_tot[i] = result;
 
 							//calculating print parms
 							scope.calcPrtParm();
 
 							//trigger final total
 							scope.calc_totals();
-							}) 
+						}) 
 					});
-					}
 				}
 			}
 		}
 	}
+}
 }])

@@ -31,7 +31,7 @@
 							</div>
 							<!-- right half -->
 							<div class="col-6 d-flex">	
-								<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1" ng-class="{ 'border-danger' : validQuantity == false }" type="text"  ng-model="dataStore.quantity.qty_tot[$index]" ng-change = "getCvrSht()" readonly tabindex="-1"></div>	
+								<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1" ng-class="{ 'border-danger' : dataStore.validation.validQuantity == false }" type="text"  ng-model="dataStore.quantity.qty_tot[$index]" ng-change = "getCvrSht()" readonly tabindex="-1"></div>	
 							</div>
 						</div>
 					</div>

@@ -1,4 +1,4 @@
-	mpiapp.service('dataStore', ['$q', function($q){
+	mpiapp.service('dataStore', [ function($q){
 
 	this.quotenos = 0;
 
@@ -80,6 +80,18 @@
 			currency: "",
 			total: [],
 			cvt_total: []
+		},
+
+		validation : {
+			validClient: true,
+			validTxtNos: true,
+			validCvrNos: true,
+			validCvrStock:  true,
+			validCvrSize:  true,
+			validTxtStock:  true,
+			validTxtSize:  true,
+			validQuantity: true,
+			quoteSaved: false
 		}
 	};
 	

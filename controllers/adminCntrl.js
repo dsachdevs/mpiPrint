@@ -12,7 +12,7 @@ apiCalls.configCWT().getData ({},
 						}
 				},
 				function(error){
-						$scope.cwterror = "Error while fetching CWT. Contact Tech-support";
+						$scope.cwterror = "Error while fetching CWT. Refresh and try again. if error persists, contact Tech-support";
 				}	
 				);
 
@@ -24,7 +24,7 @@ apiCalls.configCWT().getData ({},
 						$scope.cwterror = data.error;
 				},
 				function(error){
-						$scope.cwterror = "Error while fetching CWT. Contact Tech-support";
+						$scope.cwterror = "Error while updating CWT. Refresh and try again. if error persists, contact Tech-support";
 				}	
 				);
 	}

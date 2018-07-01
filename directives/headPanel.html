@@ -28,7 +28,7 @@
 				<div class="input-group-prepend">
 						 <div class="input-group-text p-0 px-1">Client</div>
 				</div>
-				<input class="form-control p-0 px-1" ng-class="{ 'border-danger' : validClient == false }" aria-describedby="client" type="text" maxlength="40" ng-model="dataStore.heading.client">
+				<input class="form-control p-0 px-1" ng-class="{ 'border-danger' : dataStore.validation.validClient == false }" aria-describedby="client" type="text" maxlength="40" ng-model="dataStore.heading.client">
 		</div>
 
 		<div class="col-lg-3 col-md-3 input-group mb-2 mr-sm-2">
@@ -84,7 +84,7 @@
 					<div class="input-group-prepend">
 					 	<div class="input-group-text p-1"># TXT pages</div>
 					</div>
-					<input class="form-control p-0 px-1" ng-class="{ 'border-danger' : validTxtNos == false }" aria-describedby="client" type="text" ng-model="dataStore.heading.txtnos"
+					<input class="form-control p-0 px-1" ng-class="{ 'border-danger' : dataStore.validation.validTxtNos == false }" aria-describedby="client" type="text" ng-model="dataStore.heading.txtnos"
 					ng-change="calcUpsT()">
 				</div>
 			</div>
@@ -94,14 +94,14 @@
 					<div class="input-group-prepend">
 							 <div class="input-group-text p-0 px-1">TEXT</div>
 					</div>
-					<select class="custom-select p-0 px-1 m-0" ng-class="{ 'border-danger' : validTxtStock == false }" ng-options = "g as g.gradeDesc for g in grades" ng-model = "dataStore.heading.txtstock" ng-change="calcTCwt()"></select>
+					<select class="custom-select p-0 px-1 m-0" ng-class="{ 'border-danger' : dataStore.validation.validTxtStock == false }" ng-options = "g as g.gradeDesc for g in grades" ng-model = "dataStore.heading.txtstock" ng-change="calcTCwt()"></select>
 				</div>
 
 				<div class="col-md-5 col-sm-6 input-group">
 					<div class="input-group-prepend">
 							 <div class="input-group-text p-0 px-1">Sheet Size</div>
 					</div>
-					<select class="custom-select p-0 px-1" ng-class="{ 'border-danger' : validTxtSize == false }" ng-options = "s as s.sizeDesc for s in sizes" ng-model = "dataStore.heading.txtsize" ng-change="calcTCwt()"></select>
+					<select class="custom-select p-0 px-1" ng-class="{ 'border-danger' : dataStore.validation.validTxtSize == false }" ng-options = "s as s.sizeDesc for s in sizes" ng-model = "dataStore.heading.txtsize" ng-change="calcTCwt()"></select>
 				</div>
 			</div>
 
@@ -128,7 +128,7 @@
 					<div class="input-group-prepend">
 						<div class="input-group-text p-1 "># CVR pages</div>
 					</div>
-					<input class="form-control p-0 px-1" ng-class="{ 'border-danger' : validCvrNos == false }" aria-describedby="client" type="text" ng-model="dataStore.heading.cvrnos" ng-change="calcUps()">
+					<input class="form-control p-0 px-1" ng-class="{ 'border-danger' : dataStore.validation.validCvrNos == false }" aria-describedby="client" type="text" ng-model="dataStore.heading.cvrnos" ng-change="calcUps()">
 				</div>
 			</div>
 
@@ -137,7 +137,7 @@
 					<div class="input-group-prepend">
 						<div class="input-group-text p-0 px-1">COVER</div>
 					</div>
-					<select class="custom-select p-0 px-1" ng-class="{ 'border-danger' : validCvrStock == false }" ng-options = "g as g.gradeDesc for g in grades" ng-model = "dataStore.heading.cvrstock" ng-change="calcCwt()">
+					<select class="custom-select p-0 px-1" ng-class="{ 'border-danger' : dataStore.validation.validCvrStock == false }" ng-options = "g as g.gradeDesc for g in grades" ng-model = "dataStore.heading.cvrstock" ng-change="calcCwt()">
 					</select>
 				</div>
 
@@ -145,7 +145,7 @@
 					<div class="input-group-prepend">
 						<div class="input-group-text p-0 px-1">Sheet size</div>
 					</div>
-					<select class="custom-select p-0 px-1" ng-class="{ 'border-danger' : validCvrSize == false }" ng-options = "s as s.sizeDesc for s in sizes" ng-model = "dataStore.heading.cvrsize" ng-change="calcCwt()">
+					<select class="custom-select p-0 px-1" ng-class="{ 'border-danger' : dataStore.validation.validCvrSize == false }" ng-options = "s as s.sizeDesc for s in sizes" ng-model = "dataStore.heading.cvrsize" ng-change="calcCwt()">
 					</select>
 				</div>
 			</div>

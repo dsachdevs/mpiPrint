@@ -1,4 +1,4 @@
-mpiapp.directive('coverPanel', ['coverNtext', 'calculateTotals',  function (coverNtext, calculateTotals) {
+mpiapp.directive('coverPanel', ['coverNtext', 'calculateTotals', 'roundUp',  function (coverNtext, calculateTotals,roundUp) {
 	/* body... */
 	return {
 		restrict: 'E',
@@ -43,7 +43,7 @@ mpiapp.directive('coverPanel', ['coverNtext', 'calculateTotals',  function (cove
 						//calculating net sheets
 						scope.dataStore.cover.cvr_arr[0][i] = coverNtext.getNetSheets(scope.dataStore.quantity.qty_tot[i], scope.dataStore.cover.cvr_parms.cvr_ups);
 
-						if(scope.roundToTwo(scope.dataStore.cover.cvr_arr[0][i])>0)
+						if(roundUp.roundToTwo(scope.dataStore.cover.cvr_arr[0][i])>0)
 						{
 						//calculating press spoils
 							scope.dataStore.cover.cvr_arr[1][i] = coverNtext.getPressSpoils(scope.dataStore.cover.cvr_parms.cvr_ups);
@@ -60,7 +60,7 @@ mpiapp.directive('coverPanel', ['coverNtext', 'calculateTotals',  function (cove
 
 			scope.getTotCvr = function () {
 				for(let i = 0; i<scope.quotenos; i++){
-					if (scope.roundToTwo(scope.dataStore.cover.cvr_arr[0][i]) > 0) {
+					if (roundUp.roundToTwo(scope.dataStore.cover.cvr_arr[0][i]) > 0) {
 					//Calculating gross sheets						
 						calculateTotals.verticalAddArray(scope.dataStore.cover.cvr_arr, scope.dataStore.cover.cvr_gross)
 

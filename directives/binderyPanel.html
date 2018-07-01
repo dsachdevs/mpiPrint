@@ -101,7 +101,7 @@
 			<!-- right half -->
 			<div class="col-6 d-flex">
 				<div class="col-3" ng-repeat="i in getNumber(number)" >
-					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in dataStore.bindery.bnd_arr" readonly ng-model="dataStore.bindery.bnd_arr[$index][$parent.$index]" ng-change="calcBndParm()">
+					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in dataStore.bindery.bnd_arr" readonly tabindex="-1" ng-model="dataStore.bindery.bnd_arr[$index][$parent.$index]" ng-change="calcBndParm()">
 					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i2 in dataStore.bindery.bnd_arr2" ng-model="dataStore.bindery.bnd_arr2[$index][$parent.$index]" ng-change="calcBndParm()">
 				</div>
 			</div>

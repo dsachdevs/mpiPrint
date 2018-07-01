@@ -1,23 +1,31 @@
-mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls','$window', 'maintainQuote', function($scope,$timeout, dataStore, apiCalls, $window, maintainQuote){
+mpiapp.controller('formCntrl', ['$scope','dataStore','apiCalls','$window', 'maintainQuote', function($scope, dataStore, apiCalls, $window, maintainQuote){
 
 	
 	//show the warning message if the user tries to refresh the form
 	$window.onbeforeunload = function(e) {
-		var dialogText = 'Any unsave ddata would be lost, are you sure you want to exit?';
-		e.returnValue = dialogText;
-		return dialogText;
+		if($scope.dataStore.validation.quoteSaved == false)
+		{
+			var dialogText = 'Any unsave ddata would be lost, are you sure you want to exit?';
+			e.returnValue = dialogText;
+			return dialogText;
+		}
 	};
 
 	// Remove thie message from window object when user leaves ther page so that it doesnt appear on other views
 	$scope.$on('$destroy', function() {
 		$window.onbeforeunload = undefined;
+
 	});
 
 	//show the warnong on the location change
 	$scope.$on('$locationChangeStart', function (event) {
-		var answer = confirm('Any unsaved data would be lost, are you sure you want to exit?');
-		if (!answer) {
-			event.preventDefault();
+		console.log($scope.dataStore.validation.quoteSaved);
+		if($scope.dataStore.validation.quoteSaved == false)
+		{
+			var answer = confirm('Any unsaved data would be lost, are you sure you want to exit?');
+			if (!answer) {
+				event.preventDefault();
+			}
 		}
 	});
 
@@ -38,7 +46,7 @@ mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls','$win
 	};
 
 	//craeting a datastaore in scope
-	$scope.dataStore = dataStore.dataObj;
+	$scope.dataStore = angular.copy(dataStore.dataObj);
 
 	//2 Decimal round up
 	$scope.roundToTwo= function (num) { 
@@ -49,6 +57,10 @@ mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls','$win
 	};
 
 	//Populating Grades and Sizes by calling api
+
+		//reset the error stack for the modal
+		$scope.modalbody=["API Error!"];
+
 	apiCalls.getGradeAndSize()
 	.getData ({},
 		function(data){
@@ -58,7 +70,9 @@ mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls','$win
 				$scope.dataStore.heading.cvrstock = $scope.grades[0];
 			}
 			else if(data.grades.status == 500){
-				console.log("Server error while fetching the grades");
+				// console.log("Server error while fetching the grades");
+				$scope.modalbody.push("Server error while fetching the grades");
+			
 			}
 
 			if(data.sizes.status == 200){
@@ -67,18 +81,24 @@ mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls','$win
 				$scope.dataStore.heading.cvrsize = $scope.sizes[0];
 			}
 			else if(data.sizes.status == 500){
-				console.log("Server error while fetching the sizes");
-			}
+				// console.log("Server error while fetching the sizes");
+				$scope.modalbody.push("Server error while fetching the sizes");
+							}
+
+			if($scope.modalbody.length > 1) 
+				$('#exampleModal').modal('show');
 		},
 		function(error){
-			console.log("Unknown error while fetching sizes. Contact Tech-support")
+			// console.log("Unknown error while fetching sizes. Contact Tech-support")
+			$scope.modalbody.push("Error while fetching grades and sizes. Contact Tech-support");
+			$('#exampleModal').modal('show');
 		}	
 		);
 
 	apiCalls.configCWT().getData ({},
 		function(data){
 			if(data.status == 200){
-				$scope.validCWT = true;
+				$scope.dataStore.validation.validCWT = true;
 				$scope.dataStore.cover.cvr_parms.cvr_cwt = data.result;
 				$scope.dataStore.text.txt_parms.txt_cwt = data.result; 
 			}
@@ -87,25 +107,12 @@ mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls','$win
 			}
 		},
 		function(error){
-			$scope.footerMessage = "Error while fetching CWT. Contact Tech-support";
-			$scope.validCWT = false;
+			// $scope.footerMessage = "Error while fetching CWT. Contact Tech-support";
+			$scope.modalbody.push("Error while fetching CWT from the server. Contact Tech-support");
+			$scope.dataStore.validation.validCWT = false;
+			$('#exampleModal').modal('show');
 		}	
 		);
-
-
-	$scope.getBndOvr = function(qnty) {
-		let result = 0;
-		if(qnty <= 5000) {
-			result = 200;
-		}
-		else if(qnty <= 15000) {
-			result = 500;
-		}
-		else {
-			result = parseInt(0.03* qnty);
-		}
-		return result;
-	}
 
 
 	$scope.isValid = function (data) {
@@ -116,18 +123,10 @@ mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls','$win
 	};
 
 	$scope.validate = function () {
-		$scope.validClient = true;
-		$scope.validTxtNos = true;
-		$scope.validCvrNos = true;
-		$scope.validCvrStock =  true;
-		$scope.validCvrSize =  true;
-		$scope.validTxtStock =  true;
-		$scope.validTxtSize =  true;
-		$scope.validQuantity = true;
 
 		//client name is mandatory
 		if( !$scope.isValid($scope.dataStore.heading.client) ){
-			$scope.validClient = false;
+			$scope.dataStore.validation.validClient = false;
 			$scope.modalbody.push("Client name can not be blank!");
 		}
 
@@ -137,9 +136,9 @@ mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls','$win
 			{
 				if( !$scope.isValid($scope.dataStore.heading.txtstock.gradeDesc) || !$scope.isValid($scope.dataStore.heading.txtsize.sizeDesc) )
 				{
-					$scope.validTxtNos = false;
-					$scope.validTxtStock = false;
-					$scope.validTxtSize = false;
+					$scope.dataStore.validation.validTxtNos = false;
+					$scope.dataStore.validation.validTxtStock = false;
+					$scope.dataStore.validation.validTxtSize = false;
 					$scope.modalbody.push("TEXT and sheet size cannot be blank for #TXT pages greater than 0!");
 				}
 
@@ -148,9 +147,9 @@ mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls','$win
 			{ 
 				if( $scope.isValid($scope.dataStore.heading.txtstock.gradeDesc) || $scope.isValid($scope.dataStore.heading.txtsize.sizeDesc) )
 				{
-					$scope.validTxtNos = false;
-					$scope.validTxtStock = false;
-					$scope.validTxtSize = false;
+					$scope.dataStore.validation.validTxtNos = false;
+					$scope.dataStore.validation.validTxtStock = false;
+					$scope.dataStore.validation.validTxtSize = false;
 					$scope.modalbody.push("TEXT and Sheet size cannot be selected for #TXT pages = 0!");
 				}
 			}
@@ -159,9 +158,9 @@ mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls','$win
 			{
 				if( !$scope.isValid($scope.dataStore.heading.cvrstock.gradeDesc) || !$scope.isValid($scope.dataStore.heading.cvrsize.sizeDesc) )
 				{
-					$scope.validCvrNos = false;
-					$scope.validCvrStock = false;
-					$scope.validCvrSize = false;
+					$scope.dataStore.validation.validCvrNos = false;
+					$scope.dataStore.validation.validCvrStock = false;
+					$scope.dataStore.validation.validCvrSize = false;
 					$scope.modalbody.push("COVER and sheet size cannot be blank for #CVR pages greater than 0!");
 				}
 				
@@ -170,31 +169,30 @@ mpiapp.controller('formCntrl', ['$scope','$timeout','dataStore','apiCalls','$win
 			{ 
 				if( $scope.isValid($scope.dataStore.heading.cvrstock.gradeDesc) || $scope.isValid($scope.dataStore.heading.cvrsize.sizeDesc) )
 				{
-					$scope.validCvrNos = false;
-					$scope.validCvrStock = false;
-					$scope.validCvrSize = false;
+					$scope.dataStore.validation.validCvrNos = false;
+					$scope.dataStore.validation.validCvrStock = false;
+					$scope.dataStore.validation.validCvrSize = false;
 					$scope.modalbody.push("COVER and Sheet size cannot be selected for #CVR pages = 0!");
 				}
 			}
 		}
 		else
 		{
-			$scope.validTxtNos = false;
-			$scope.validCvrNos = false;
+			$scope.dataStore.validation.validTxtNos = false;
+			$scope.dataStore.validation.validCvrNos = false;
 			$scope.modalbody.push("Both #Text pages and #CVR pages can not be 0!");
-			//return false;
 		}
 
 
-		if($scope.validCWT == false) {
-			$scope.modalbody.push("Error while fetching CWT. Contact Tech-support");
-		}
+		// if($scope.dataStore.validation.validCWT == false) {
+		// 	$scope.modalbody.push("Error while fetching CWT. Contact Tech-support");
+		// }
 
 		const result = $scope.dataStore.quantity.qty_tot.filter(element => element > 0);	
 		
 		if( result.length == 0)
 		{
-			$scope.validQuantity = false;
+			$scope.dataStore.validation.validQuantity = false;
 			$scope.modalbody.push("Not all quantities can be zero!");
 		}
 		else

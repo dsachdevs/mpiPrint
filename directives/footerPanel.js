@@ -21,6 +21,7 @@ mpiapp.directive('footerPanel', ['apiCalls', '$location','$anchorScroll' ,functi
 							$('.collapse').collapse('hide');
 							scope.footerMessage = "Quote " +  scope.dataStore.heading.quote + " ready for print!";
 							scope.printReady = true;
+							scope.dataStore.validation.quoteSaved = true;
 						}
 					},
 					function(error){
