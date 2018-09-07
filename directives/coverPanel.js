@@ -18,7 +18,7 @@ mpiapp.directive('coverPanel', ['coverNtext', 'calculateTotals', 'roundUp',  fun
 				//scope.dataStore.cover.cvr_parms.cvr_cwt = 64;
 
 				//Calculate MWeight
-				coverNtext.getMWeight(scope.dataStore.heading.cvrstock.grade, scope.dataStore.heading.cvrsize.sizeFactor)
+				coverNtext.getMWeightcvr(scope.dataStore.heading.cvrstock.grade, scope.dataStore.heading.cvrsize.sizeFactor)
 				.then(function (result) {
 					scope.dataStore.cover.cvr_parms.cvr_mweight = result
 					//calculate net sheets
@@ -41,7 +41,7 @@ mpiapp.directive('coverPanel', ['coverNtext', 'calculateTotals', 'roundUp',  fun
 					if(parseInt(scope.dataStore.quantity.qty_tot[i]) > 0)
 					{
 						//calculating net sheets
-						scope.dataStore.cover.cvr_arr[0][i] = coverNtext.getNetSheets(scope.dataStore.quantity.qty_tot[i], scope.dataStore.cover.cvr_parms.cvr_ups);
+						scope.dataStore.cover.cvr_arr[0][i] = parseInt(coverNtext.getNetSheets(scope.dataStore.quantity.qty_tot[i], scope.dataStore.cover.cvr_parms.cvr_ups));
 
 						if(roundUp.roundToTwo(scope.dataStore.cover.cvr_arr[0][i])>0)
 						{
@@ -49,7 +49,7 @@ mpiapp.directive('coverPanel', ['coverNtext', 'calculateTotals', 'roundUp',  fun
 							scope.dataStore.cover.cvr_arr[1][i] = coverNtext.getPressSpoils(scope.dataStore.cover.cvr_parms.cvr_ups);
 
 						//calculating bindary overs
-							scope.dataStore.cover.cvr_arr[2][i] = coverNtext.getBndOvr(scope.dataStore.quantity.qty_tot[i]);
+							scope.dataStore.cover.cvr_arr[2][i] = coverNtext.getBndOvr(scope.dataStore.quantity.qty_tot[i], scope.dataStore.cover.cvr_parms.cvr_ups);
 
 						//Calculate totals
 							scope.getTotCvr();

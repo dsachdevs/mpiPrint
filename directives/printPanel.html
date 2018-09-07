@@ -18,7 +18,11 @@
 
 			<!-- user parms -->
 				<div class="col-2 p-0 pt-4 pl-3 mt-5">
-						<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in [1, 2, 3, 4]" ng-model="dataStore.print.prt_user_parm[$index]" ng-change="calcPrtParm()">
+					<input class="form-control p-0 px-1 mb-2" type="text" ng-repeat="i in [1, 2]" ng-model="dataStore.print.prt_user_parm[$index]" readonly tabindex="-1">
+					<div class="row justify-content-start p-0 pl-3" ng-repeat="i in [1, 2]">
+						<input class="form-control p-0 px-1 mb-1 col-6" type="text" ng-model="dataStore.print.prt_user_parm[$index + 2 + ($index * 1)]" readonly tabindex="-1">
+						<input class="form-control p-0 px-1 mb-1 col-6" type="text" ng-model="dataStore.print.prt_user_parm[$index + 3 + ($index * 1)]" ng-change="calcPrtParm()" placeholder="PMS">
+					</div>
 				</div>
 
 			<!-- lang -->

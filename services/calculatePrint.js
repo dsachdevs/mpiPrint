@@ -36,6 +36,32 @@ mpiapp.service('calculatePrint', ['$q','roundUp', function($q, roundUp){
 		})
 		},
 
+		getPrtPlates: function (nos, clr1, clr2, result) {
+			return  $q(function(resolve) {
+				let wt1=0, wt2=0;
+
+				//populating plates
+				result[0] = (result[0] || 0 ) + parseInt(nos/16) * (clr1 + clr2);
+
+				let leftout = nos % 16;
+
+				if(leftout > 0) {
+				wt1 = parseInt(leftout/8) * Math.max(clr1, clr2);
+				let leftout2 = leftout % 8;
+				if(leftout2 > 0) {
+					wt2 = parseInt(leftout2/4) * Math.max(clr1, clr2);
+					}
+				}
+
+				//populating w+t
+				result[1] = (result[1] || 0) + parseInt(wt1 + wt2);
+
+				//populate running parms here
+
+				resolve();	
+		})
+		},
+
 		getPrt: function (quotenos, prtarray, prtUserParm, qntytotal, cvrGross, txtGross, prtTot) {
 			return  $q(function(resolve) {
 

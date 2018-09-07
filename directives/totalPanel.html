@@ -1,20 +1,20 @@
 <div>
 	<!-- Entire Total -->
-	<div class="row">
+	<!-- <div class="row"> -->
 				<!-- left side -->
-		<div class="col-6">
-			<div class="row justify-content-end mb-2">
+<!-- 		<div class="col-6">
+			<div class="row justify-content-end mb-2"> -->
 <!-- 				<div class="col-4 text-right alert alert-warning text-center p-1 px-3" role="alert"> All prices are in CAD
 				</div> -->
-
+<!-- 
 				<div class="col-2 text-right font-weight-bold">TOTAL</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- right half -->
-		<div class="col-6 d-flex">	
+<!-- 		<div class="col-6 d-flex d-print-none">	
 			<div class="col-3" ng-repeat="i in getNumber(number)"><input class="form-control p-0 px-1 mb-2" type="text"  ng-model="dataStore.totals.total[$index]" readonly tabindex="-1"></div>	
-		</div>
-	</div>
+		</div> -->
+	<!-- </div> -->
 
 
 		<!-- Converted totals -->
@@ -27,10 +27,10 @@
 				</div>
 
 				<div class="col-3"> 
-					<input class="form-control p-0 px-1 mb-2 text-center d-print-none" type="text" placeholder="Currency" ng-model="dataStore.totals.Currency">
+					<input class="form-control p-0 px-1 mb-2 text-center d-print-none" type="text" placeholder="Currency" ng-model="dataStore.totals.currency">
 				</div>
 
-				<div class="col-4 text-right font-weight-bold">TOTAL ({{ dataStore.totals.Currency }})</div>
+				<div class="col-4 text-right font-weight-bold">TOTAL ({{ dataStore.totals.currency }})</div>
 			</div>
 		</div>
 		<!-- right half -->

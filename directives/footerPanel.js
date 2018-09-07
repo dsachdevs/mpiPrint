@@ -1,4 +1,4 @@
-mpiapp.directive('footerPanel', ['apiCalls', '$location','$anchorScroll' ,function (apiCalls, $location,$anchorScroll) {
+mpiapp.directive('footerPanel', ['apiCalls', '$location','$anchorScroll', '$timeout' ,function (apiCalls, $location,$anchorScroll, $timeout) {
 	/* body... */
 	return {
 		restrict: 'E',

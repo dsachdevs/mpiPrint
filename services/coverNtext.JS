@@ -11,10 +11,23 @@ mpiapp.service('coverNtext', ['$q','roundUp', function($q, roundUp){
 				resolve(result);
 			});
 		},
-		
-		getMWeight: function (grade, size) {
+		getForms: function (nos) {
 			return  $q(function(resolve, reject) {
-			let result = roundUp.roundToTwo((parseInt(grade) * parseInt(size) * 2 ) / 950);
+				let result = parseFloat(parseInt(nos)/16).toFixed(3);
+				if (isNaN(result)) {result = 0;}
+				resolve(result);
+			});
+		},
+		
+		getMWeightcvr: function (grade, size) {
+			return  $q(function(resolve, reject) {
+			let result = roundUp.roundUp((parseInt(grade) * parseInt(size) ) / 425);
+				resolve(result);
+			});
+		},
+		getMWeighttxt: function (grade, size) {
+			return  $q(function(resolve, reject) {
+			let result = roundUp.roundUp((parseInt(grade) * parseInt(size) * 2 ) / 950);
 				resolve(result);
 			});
 		},
@@ -29,10 +42,18 @@ mpiapp.service('coverNtext', ['$q','roundUp', function($q, roundUp){
 			return result;
 		},
 		getPressSpoils: function (ups) {
-			let result = parseInt(roundUp.roundToTwo(1/ups) * 500)
+			let result = 500;
+			if(ups < 1) {
+			 result = parseInt(roundUp.roundToTwo(1/ups) * 500);
+			}
 			return result;
 		},
-		getBndOvr: function(qnty) {
+		getBndOvr: function(qnty, ups) {
+			let multiple = 1;
+			if(ups < 1) {
+			 multiple = parseInt(roundUp.roundToTwo(1/ups));
+			}
+
 			let result = 0;
 			if(qnty <= 5000) {
 				result = 200;
@@ -43,7 +64,7 @@ mpiapp.service('coverNtext', ['$q','roundUp', function($q, roundUp){
 			else {
 				result = parseInt(0.03* qnty);
 			}
-			return result;
+			return result * multiple;
 		},
 		getCost: function (perMillion, gross) {
 			return  $q(function(resolve, reject) {

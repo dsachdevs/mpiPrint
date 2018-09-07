@@ -44,7 +44,7 @@
 
 		text:{
 			txt_lang : ["Net Sheets", "Press Spoils", "Bindery Overs"],
-			txt_parms : { txt_ups: "", txt_cwt: "", txt_mweight: "", txt_perMillion:""},
+			txt_parms : { txt_ups: "", txt_forms: "", txt_cwt: "", txt_mweight: "", txt_perMillion:""},
 			//txt_arr : [{net_sheet : []}, {press_spoils : []}, {bindery_overs : []}],
 			txt_arr : [[],[],[]],
 			txt_gross : [],
@@ -55,7 +55,7 @@
 			prt_lang : ["Impression 1", "Impression 2", "Plates & MR", "M/R W+T", "Running 1", "Running 2"],
 			prt_parm_lang : ["Freight", "Weight", "Ctns", "Skids"],
 			prt_parm_arr : [[],[],[],[]],
-			prt_user_parm : [],
+			prt_user_parm : [0,1,2,3,4,5,6],
 			prt_arr : [{Impression1 : []}, {Impression2 : []}, {PlatesMR : []}, {MRWT : []}, {Running1 : []}, {Running2 : []} ],
 			prt_tot : []
 		},
@@ -76,8 +76,8 @@
 		},
 		
 		totals : {
-			ex_rate: 0,
-			currency: "",
+			ex_rate: 1,
+			currency: "CAD",
 			total: [],
 			cvt_total: []
 		},
